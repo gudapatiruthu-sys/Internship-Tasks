@@ -1,0 +1,93 @@
+Data type is an attribute that specifies the type of data an object can hold. Every column in a database table is required to have a name and a data type.
+
+ Data type is a guideline for SQL. It tells the database engine, What kind of values to expect (numbers, text, dates, etc.),How much storage space to allocate for that data and What operations can be performed on that data (e.g., you can mathematically add two integers, but you can't add two text strings).
+
+Choosing the correct data type ensures data integrity (preventing typos like typing "apple" into a price column) and optimizes your database's performance and storage.
+
+The Main SQL Data Types (Categorized)
+In SQL Workbench, data types generally fall into three main categories: String (Text), Numeric, and Date/Time. Here is the detailed breakdown of each.
+
+1. String (Text) Data Types
+These are used to store letters, numbers, symbols, or a combination of all three.
+
+CHAR(size)
+
+Description: A fixed-length string. If you define a CHAR(10) and only store a 3-letter word, SQL will pad the rest with spaces to fill all 10 characters. It is fast but can waste space if lengths vary.
+
+Example: Storing 2-letter state codes like 'TN' or 'KL'.
+
+SQL Example: CREATE TABLE INDIAN_States ( State_Code CHAR(2) );
+
+VARCHAR(size)
+
+Description: A variable-length string. If you define a VARCHAR(100) but only type a 5-letter word, it only uses space for those 5 characters. This is the most commonly used type for general text.
+
+Example: Storing names or email addresses.
+
+SQL Example: CREATE TABLE Users ( Email_Address VARCHAR(100) );
+
+TEXT
+
+Description: Used for holding large amounts of text data (up to 65,535 characters). Unlike VARCHAR, you don't need to specify a size limit.
+
+Example: Storing product descriptions or blog post bodies.
+
+SQL Example: CREATE TABLE Blog_Posts ( Post_Body TEXT );
+
+2. Numeric Data Types
+These are used to store numbers, which can be whole numbers (integers) or numbers with decimals.
+
+INT (or INTEGER)
+
+Description: Stores standard whole numbers without decimals. It can hold both positive and negative values.
+
+Example: Storing a user's ID or a count of inventory items.
+
+SQL Example: CREATE TABLE Inventory ( Item_Count INT );
+
+DECIMAL(size, d)
+
+Description: Stores exact fixed-point numbers. The size is the total number of digits, and d is the number of digits after the decimal point. This is crucial for financial data where rounding errors cannot happen.
+
+Example: Storing a price like $99.95. You'd use DECIMAL(5,2) (5 total digits, 2 after the decimal).
+
+SQL Example: CREATE TABLE Products ( Price DECIMAL(5,2) );
+
+FLOAT(size, d) / DOUBLE
+
+Description: Stores approximate floating-point numbers. They use less storage than DECIMAL and are great for scientific calculations, but they can have slight rounding variances.
+
+Example: Storing scientific measurements like GPS coordinates or CPU temperatures.
+
+SQL Example: CREATE TABLE Weather_Data ( Temperature FLOAT(4,1) );
+
+3. Date and Time Data Types
+These are specialized formats that allow you to sort, filter, and calculate intervals based on time.
+
+DATE
+
+Description: Stores a date in the format YYYY-MM-DD. It does not include the time of day.
+
+Example: Storing a birthdate or a project deadline.
+
+SQL Example: CREATE TABLE Employees ( Birth_Date DATE );
+
+TIME
+
+Description: Stores a time of day or a duration interval in the format HH:MM:SS.
+
+Example: Storing the opening hours of a store.
+
+SQL Example: CREATE TABLE Store_Hours ( Opening_Time TIME );
+
+DATETIME
+
+Description: A combination of both date and time, formatted as YYYY-MM-DD HH:MM:SS.
+
+Example: Storing the exact moment an online order was placed.
+
+SQL Example: CREATE TABLE Orders ( Order_Placed DATETIME );
+
+When you combine all the data types and write an single command you get this
+
+CREATE TABLE ECommerce_Customers ( Customer_ID INT, Full_Name VARCHAR(50), Account_Status CHAR(1), Account_Balance DECIMAL(10,2), Date_Joined DATE );
